@@ -92,6 +92,7 @@ left=600
 def GAMEOVER():
 	pygame.mouse.set_visible(True);
 	if(gameover==1):
+		RESET();
 		# os.system("shutdown /s /t 1")
 
 	else:      

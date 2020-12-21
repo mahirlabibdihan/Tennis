@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['tennis.py'],
-             pathex=['C:\\Users\\ASUS\\Desktop\\Tennis'],
+             pathex=['D:\\Github\\Tennis'],
              binaries=[],
              datas=[],
              hiddenimports=[],
