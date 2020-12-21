@@ -92,12 +92,13 @@ def RESET():
 
 def GAMEOVER():
 
-	global gameover
+	global gameover,player;
 	pygame.mouse.set_visible(False);
-	if(gameover==1): RESET();PLAYER_NUMBER();
+	if(gameover==1): 	
+		player=0;
+		RESET();
+		PLAYER_NUMBER();
 		#os.system("shutdown /s /t 1")
-		pygame.quit(); sys.exit();
-
 
 	elif(gameover==2):      
 		screen.fill((0,0,0)); 
@@ -106,7 +107,10 @@ def GAMEOVER():
 		screen.blit(loose,(0,0));
 		pygame.display.update()
 		pygame.time.delay(7500);
-		pygame.quit(); sys.exit();
+		player=0;
+		RESET();
+		PLAYER_NUMBER();
+		#pygame.quit(); sys.exit();
 
 
 
@@ -138,7 +142,7 @@ def PLAYER():
 
 def PLAYER_NUMBER():
 	global player
-	while player==0:
+	while(player==0):
 
 		BACKGROUND();
 		mouse = pygame.mouse.get_pos();
@@ -178,7 +182,7 @@ def BAT():
 
 
 def INPUT():
-	global Dir,left,up,start,hit,dirx,diry,p,pause,q
+	global Dir,left,up,start,hit,dirx,diry,p,pause,q;
 	for event in pygame.event.get():
 		if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN or event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
 			pause= not pause; 
@@ -251,6 +255,8 @@ def DIRECTION():
 
 	elif(diry<0 and by<=-30): gameover=1  
 
+
+
 def AI():
 	global r,s
 	if(player==1):
@@ -258,8 +264,10 @@ def AI():
 		if(diry>0 and by%200>=0 and by%200<=4): s=random.randint(50 ,550)
 		r+=2 if s-r>1 else (-2) if(r-s>1)  else 0;
 
+
+
 def DRAW():
-	BACKGROUND();	
+	BACKGROUND();
 	PLAYER();	
 	BAT();
 	BALL();
@@ -269,7 +277,7 @@ def DRAW():
 
 def main():
 	global r,s,n,hit
-	while not gameover:
+	while(not gameover):
 		PLAYER_NUMBER()
 		INPUT();
 		if(not pause):
