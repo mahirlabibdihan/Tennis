@@ -96,6 +96,8 @@ def GAMEOVER():
 	pygame.mouse.set_visible(False);
 	if(gameover==1): RESET();PLAYER_NUMBER();
 		#os.system("shutdown /s /t 1")
+		pygame.quit(); sys.exit();
+
 
 	elif(gameover==2):      
 		screen.fill((0,0,0)); 
@@ -257,8 +259,7 @@ def AI():
 		r+=2 if s-r>1 else (-2) if(r-s>1)  else 0;
 
 def DRAW():
-	BACKGROUND();
-	
+	BACKGROUND();	
 	PLAYER();	
 	BAT();
 	BALL();
